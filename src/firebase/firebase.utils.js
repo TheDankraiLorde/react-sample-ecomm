@@ -15,6 +15,27 @@ const config = {
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
+export const createUserProfileDoc = async(userAuth, addtnlData) => {
+    if(!userAuth) return;
+    const uRef= (firestore.doc(`users/${userAuth.uid}`))
+    const snap = await uRef.get()
+    if (!snap.exists){
+        const {displayName,email} = userAuth;
+        const createdAt = new Date();
+        try {
+            await uRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...addtnlData
+            })
+        }
+        catch(error){
+            console.log(`Error: ${error}`)
+        }
+    }
+    return uRef;
+}
 export const firestore = firebase.firestore();
 
 /* Google Authentication */
