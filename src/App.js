@@ -20,7 +20,6 @@ class App extends React.Component {
       if(user){
         const uRef=await createUserProfileDoc(user)
         uRef.onSnapshot(snapshot => {
-          
             setCurUser({
               id: snapshot.id,
               ...snapshot.data()
@@ -29,6 +28,7 @@ class App extends React.Component {
         });
       }
       else {
+        console.log(user)
         setCurUser(user)
       }
     })

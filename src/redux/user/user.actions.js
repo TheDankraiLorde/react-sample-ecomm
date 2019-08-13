@@ -1,4 +1,4 @@
-export const setCurUser = user => ({
-    type: "SET_CURRENT_USER",
+export const setCurUser = (user) => ({
+    type: "SCU",
     payload: user
 })
