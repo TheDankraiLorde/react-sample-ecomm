@@ -1,3 +1,5 @@
+import {UserActionTypes} from './user.types'
+
 const INITIAL_STATE = {
     currentUser: null
 }
@@ -6,7 +8,7 @@ const userRed = (state = INITIAL_STATE, action) =>
 {    
     switch (action.type) 
     {
-        case "SCU":
+        case UserActionTypes.SCU:
             return {
                 ...state,
                 currentUser: action.payload

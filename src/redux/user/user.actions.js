@@ -1,4 +1,6 @@
+import {UserActionTypes} from './user.types'
+
 export const setCurUser = (user) => ({
-    type: "SCU",
+    type: UserActionTypes.SCU,
     payload: user
 })
