@@ -1,7 +1,8 @@
 import CartActionTypes from './cart.types'
 
 const INIT = {
-    hidden:true
+    hidden:true,
+    cartItems: []
 }
 
 const cartRed = (state=INIT, action) => {
