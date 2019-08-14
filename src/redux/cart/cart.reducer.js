@@ -1,4 +1,6 @@
 import CartActionTypes from './cart.types'
+import {addItemGrouper} from './cart.utils'
+import { addItem } from './cart.actions';
 
 const INIT = {
     hidden:true,
@@ -16,7 +18,7 @@ const cartRed = (state=INIT, action) => {
         case CartActionTypes.ADD_ITEM:
             return {
                 ...state,
-                cartItems: [...state.cartItems, action.payload]
+                cartItems: addItemGrouper(state.cartItems,action.payload)
             }
 
         default:
