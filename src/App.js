@@ -28,7 +28,6 @@ class App extends React.Component {
         });
       }
       else {
-        console.log(user)
         setCurUser(user)
       }
     })
