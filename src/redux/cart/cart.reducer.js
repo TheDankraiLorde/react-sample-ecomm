@@ -1,6 +1,5 @@
 import CartActionTypes from './cart.types'
 import {addItemGrouper} from './cart.utils'
-import { addItem } from './cart.actions';
 
 const INIT = {
     hidden:true,
