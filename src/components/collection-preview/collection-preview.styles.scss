@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    width: 100%;
+    min-width: 780px;
   
     .title {
       font-size: 28px;

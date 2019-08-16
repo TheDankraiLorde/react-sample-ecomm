@@ -8,6 +8,8 @@ import Header from "./components/header/header.component"
 import {auth,createUserProfileDoc} from './firebase/firebase.utils';
 import {setCurUser} from './redux/user/user.actions'
 import {connect} from 'react-redux'
+import {selectCurrentUser} from './redux/user/user.selector'
+import {createStructuredSelector} from 'reselect'
 
 class App extends React.Component {
   
@@ -52,8 +54,8 @@ class App extends React.Component {
   }
 }
 
-const mstp = ({user}) => ({
-  currentUser: user.currentUser
+const mstp = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 const mdtp = dispatch => ({
