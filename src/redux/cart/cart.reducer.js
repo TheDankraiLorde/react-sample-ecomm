@@ -20,6 +20,14 @@ const cartRed = (state=INIT, action) => {
                 cartItems: addItemGrouper(state.cartItems,action.payload)
             }
 
+        case CartActionTypes.CLEAR_ITEM:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(
+                    cartItem => (cartItem.id !== action.payload.id)
+                )
+            }
+
         default:
             return state
     }
