@@ -1,5 +1,5 @@
 import CartActionTypes from './cart.types'
-import {addItemGrouper} from './cart.utils'
+import {addItemGrouper,removeItemFromCart} from './cart.utils'
 
 const INIT = {
     hidden:true,
@@ -18,6 +18,12 @@ const cartRed = (state=INIT, action) => {
             return {
                 ...state,
                 cartItems: addItemGrouper(state.cartItems,action.payload)
+            }
+
+        case CartActionTypes.REMOVE_ITEM:
+            return {
+                ...state,
+                cartItems: removeItemFromCart(state.cartItems,action.payload)
             }
 
         case CartActionTypes.CLEAR_ITEM:
