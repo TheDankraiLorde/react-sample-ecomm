@@ -1,5 +1,6 @@
 .checkout-page {
-  width: 55%;
+  width: 75%;
+  min-width: 896px;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
 
   .checkout-header {
     width: 100%;
+    min-width: 80%;
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
