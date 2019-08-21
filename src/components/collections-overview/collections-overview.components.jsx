@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect';
 import CollectionPreview from '../collection-preview/collection-preview.component'
-import {selectCollectionHeaders} from '../../redux/shop/shop.selectors'
+import {selectCollForPreview} from '../../redux/shop/shop.selectors'
 
 const CollectionsOverview = ({collections}) =>(
     <div className="shop-page">
@@ -17,7 +17,7 @@ const CollectionsOverview = ({collections}) =>(
 )
 
 const mstp = createStructuredSelector({
-    collections: selectCollectionHeaders
+    collections: selectCollForPreview
 })
 
 export default connect(mstp)(CollectionsOverview)
