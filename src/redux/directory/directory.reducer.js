@@ -1,5 +1,3 @@
-
-
 const INITIAL_STATE = {
     sections: [
         {
@@ -12,7 +10,7 @@ const INITIAL_STATE = {
             title: 'Jackets',
             imageUrl: 'https://cdn.shopify.com/s/files/1/0108/7802/products/NEW_PRODUCTIMAGES_leather-jacket-br-1.jpg?v=1540036930',
             id: 2,
-            linkUrl:'shop/jackets'
+            linkUrl: 'shop/jackets'
         },
         {
             title: 'Sneakers',
@@ -37,7 +35,7 @@ const INITIAL_STATE = {
     ]
 }
 
-const directoryRed = (state=INITIAL_STATE, action) => {
+const directoryRed = (state = INITIAL_STATE, action) => {
     switch(action.type){
         default:
             return state;
