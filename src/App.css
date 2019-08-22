@@ -1,8 +1,13 @@
 body {
-    font-family: 'Blinker', sans-serif;
-}
-
-a {
+    font-family: 'Varela', sans-serif;
+    padding: 20px 40px;
+  }
+  
+  a {
     text-decoration: none;
     color: black;
-}
+  }
+  
+  * {
+    box-sizing: border-box;
+  }

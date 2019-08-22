@@ -1,13 +1,21 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import './App.css';
+import {connect} from 'react-redux'
+import {createStructuredSelector} from 'reselect'
+
+import Header from "./components/header/header.component"
+
+import {auth,createUserProfileDoc} from './firebase/firebase.utils';
+
+import {setCurUser} from './redux/user/user.actions'
+import {selectCurrentUser} from './redux/user/user.selector'
+
+import CheckOutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component'
 import SignPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
-import Header from "./components/header/header.component"
-import {auth,createUserProfileDoc} from './firebase/firebase.utils';
-import {setCurUser} from './redux/user/user.actions'
-import {connect} from 'react-redux'
+
+import './App.css';
 
 class App extends React.Component {
   
@@ -28,7 +36,6 @@ class App extends React.Component {
         });
       }
       else {
-        console.log(user)
         setCurUser(user)
       }
     })
@@ -47,14 +54,15 @@ class App extends React.Component {
           <Route exact path='/sign' render={() => 
               this.props.currentUser?
               (<Redirect to="/"/>):<SignPage/>}/>
+          <Route exact path="/checkout" component={CheckOutPage}/>
         </Switch>
       </div>
     );
   }
 }
 
-const mstp = ({user}) => ({
-  currentUser: user.currentUser
+const mstp = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 const mdtp = dispatch => ({
