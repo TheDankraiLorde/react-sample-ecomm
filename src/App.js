@@ -24,6 +24,11 @@ class App extends React.Component {
   componentDidMount()
   {
     const {setCurUser}=this.props
+    /*This is actually calling 
+      onAuthStateChanged which subscribes the 
+      component to updates and 
+      returns a method that allows us 
+      to unsubscribe*/
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       if(user){
         const uRef=await createUserProfileDoc(user)
