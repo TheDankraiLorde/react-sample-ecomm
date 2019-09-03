@@ -6,7 +6,7 @@ import CollectionPage from './collection.component'
 import { selCollLoaded } from '../../redux/shop/shop.selectors';
 
 const mstp = createStructuredSelector({
-    isCollLoaded: (state) => selCollLoaded(state)
+    isLoading: (state) => !selCollLoaded(state)
 })
 
 const CollectionPageContainer = compose(
