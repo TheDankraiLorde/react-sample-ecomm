@@ -5,9 +5,6 @@ import {createStructuredSelector} from 'reselect'
 
 import Header from "./components/header/header.component"
 
-import {auth,createUserProfileDoc} from './firebase/firebase.utils';
-
-import {setCurUser} from './redux/user/user.actions'
 import {selectCurrentUser} from './redux/user/user.selector'
 
 import CheckOutPage from './pages/checkout/checkout.component';
@@ -23,27 +20,7 @@ class App extends React.Component {
 
   componentDidMount()
   {
-    const {setCurUser}=this.props
-    /*This is actually calling 
-      onAuthStateChanged which subscribes the 
-      component to updates and 
-      returns a method that allows us 
-      to unsubscribe*/
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      if(user){
-        const uRef=await createUserProfileDoc(user)
-        uRef.onSnapshot(snapshot => {
-            setCurUser({
-              id: snapshot.id,
-              ...snapshot.data()
-            })
-
-        });
-      }
-      else {
-        setCurUser(user)
-      }
-    })
+    
   }
   componentWillUnmount(){
     this.unsubscribeFromAuth();
@@ -70,8 +47,4 @@ const mstp = createStructuredSelector({
   currentUser: selectCurrentUser
 })
 
-const mdtp = dispatch => ({
-  setCurUser: user => dispatch(setCurUser(user))
-})
-
-export default connect(mstp,mdtp)(App);
+export default connect(mstp)(App);

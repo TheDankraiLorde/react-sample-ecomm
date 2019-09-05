@@ -2,7 +2,8 @@ import React from 'react';
 import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input.components'
 import CustomButton from '../custom-button/custom-button.component';
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import {googleSignInStart, emailSignInStart} from '../../redux/user/user.actions'
+import {connect} from 'react-redux'
 
 class SignIn extends React.Component {
     constructor (props) {
@@ -15,14 +16,9 @@ class SignIn extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const {email, password} = this.state;
-        try{
-            await auth.signInWithEmailAndPassword(email,password);
-            this.setState({email: '',password: ''},()=>{ console.log(this.state)})
-        }
-        catch(error){
-            console.log("Error")
-        }
+        const {esis} = this.props;
+        const {email,password} = this.state
+        esis(email,password);
     }
 
     handleChange = event => {
@@ -33,6 +29,7 @@ class SignIn extends React.Component {
     }
 
     render() {
+        const {gsis}= this.props
         return(
             <div className="sign-in">
                 <h2>Sign me in!</h2>
@@ -55,7 +52,11 @@ class SignIn extends React.Component {
                         <CustomButton type="submit">
                             Sign In!
                         </CustomButton>
-                        <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+                        <CustomButton 
+                            type="button" 
+                            onClick={gsis} 
+                            isGoogleSignIn
+                        >
                             Sign in With Google!
                         </CustomButton>
                     </div>
@@ -65,4 +66,9 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn
+const mdtp = dispatch => ({
+    gsis: ()=> dispatch(googleSignInStart()),
+    esis: (email,password)=> dispatch(emailSignInStart({email,password}))
+})
+
+export default connect(null,mdtp)(SignIn)

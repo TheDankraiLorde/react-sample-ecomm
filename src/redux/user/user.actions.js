@@ -1,6 +1,21 @@
-import {UserActionTypes} from './user.types'
+import UserActionTypes from './user.types'
 
-export const setCurUser = (user) => ({
-    type: UserActionTypes.SCU,
+
+export const googleSignInStart = () => ({
+    type: UserActionTypes.GOOGLE_SIGN_IN_START
+})
+
+export const signInSuccess = (user) => ({
+    type: UserActionTypes.SIGN_IN_SUCCESS,
     payload: user
+})
+
+export const signInFailure = (err) => ({
+    type: UserActionTypes.SIGN_IN_FAILURE,
+    payload: err
+})
+
+export const emailSignInStart = (emailAndPass) => ({
+    type: UserActionTypes.EMAIL_SIGN_IN_START,
+    payload: emailAndPass
 })
