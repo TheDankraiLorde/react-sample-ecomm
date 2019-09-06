@@ -13,9 +13,3 @@ export const fetchCollFail = err => ({
     type: ShopActionTypes.FETCH_COLL_FAIL,
     payload: err
 })
-
-export const fetchCollStartAsync = () => {
-    return dispatch => {
-        
-    }   
-}

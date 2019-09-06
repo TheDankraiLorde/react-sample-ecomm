@@ -13,6 +13,7 @@ import ShopPage from './pages/shop/shop.component'
 import SignPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 
 import './App.css';
+import { checkUserSignIn } from './redux/user/user.actions';
 
 class App extends React.Component {
   
@@ -20,7 +21,8 @@ class App extends React.Component {
 
   componentDidMount()
   {
-    
+    const {checkUser} = this.props
+    checkUser()
   }
   componentWillUnmount(){
     this.unsubscribeFromAuth();
@@ -47,4 +49,8 @@ const mstp = createStructuredSelector({
   currentUser: selectCurrentUser
 })
 
-export default connect(mstp)(App);
+const mdtp = dispatch => ({
+  checkUser: () => dispatch(checkUserSignIn())
+})
+
+export default connect(mstp,mdtp)(App);
