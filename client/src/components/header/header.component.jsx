@@ -17,8 +17,13 @@ const Header = ({currentUser, hidden, sos}) => (
         <OptionsContainer>
             <OptionLink to="/shop">
                 SHOP
+<<<<<<< HEAD:client/src/components/header/header.component.jsx
             </OptionLink>
             <OptionLink className="option" to="/contacts">
+=======
+            </Link>
+            <Link className="option" to="/contact">
+>>>>>>> 232424125f36b6fbc776a7aa1067bd4c9016974f:src/components/header/header.component.jsx
                 CONTACT
             </OptionLink>
             {

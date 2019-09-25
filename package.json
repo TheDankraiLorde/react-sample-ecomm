@@ -1,9 +1,29 @@
 {
+<<<<<<< HEAD
   "name": "e-comm-server",
   "version": "1.0.0",
   "engines": {
     "node": "10.16.1",
     "npm": "6.9.0"
+=======
+  "name": "e-comm",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^6.3.5",
+    "heroku": "^7.29.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-stripe-checkout": "^2.6.3",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "reselect": "^4.0.0"
+>>>>>>> 232424125f36b6fbc776a7aa1067bd4c9016974f
   },
   "scripts": {
     "client": "cd client && yarn start",
